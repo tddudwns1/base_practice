@@ -1,5 +1,9 @@
 spring:
   profiles:
+    active: local
+    group:
+      local: db-local
+      server: db-server
     include: db
 
   datasource:
