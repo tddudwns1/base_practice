@@ -4,10 +4,35 @@ spring:
     group:
       local: db-local
       server: db-server
-    include: db
+    include:
+      - db
+      - swagger
 
   datasource:
     driver-class-name: ${DATABASE_DRIVER}
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
+    hikari:
+      connection-timeout: 3000
+      validation-timeout: 3000
+      minimum-idle: 2
+      max-lifetime: 240000
+      maximum-pool-size: 2
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: ${API_DOCS_PATH}
+  swagger-ui:
+    path: ${SWAGGER_UI_PATH}
+    groups-order: DESC
+    doc-expansion: none
+    tags-sorter: alpha
+    operationsSorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+    info:
+      title: 연습용 API Server
+      description: 연습용가리
+      version: 0.0.1
